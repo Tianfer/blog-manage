@@ -17,7 +17,7 @@ gulp.task('default', ['less', 'browserSync'], function() {
 
 gulp.task('browserSync', function() {
 	browserSync.init({
-		proxy: 'http://127.0.0.1:3000',
+		proxy: 'http://127.0.0.1:4000',
 		// files: ['public/css/*.css', 'public/js/*.js', 'views/**'],
 		browser: 'chrome',
 		port: 8000
