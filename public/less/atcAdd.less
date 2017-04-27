@@ -1,0 +1,141 @@
+html,body {
+	width: 100%;
+	height: 100%;
+	background: #e1e1e1;
+}
+
+.add {
+	width: 100%;
+	height: 100%;
+  .container {
+		padding: 20px 24px 0;
+		min-width: 700px;
+		.editor {
+			width: 100%;
+			background: #fff;
+			.span {
+				font-size: 14px;
+				margin-right: 10px;
+			}
+		}
+		.head-gray {
+			background-color: #f6f6f6;
+			padding: 13px;
+		}
+		.content-normal {
+			padding: 10px 13px 0;
+		}
+		.divider-horizontal {
+			height: 1px;
+			background-color: #e1e1e1;
+			margin: 10px 13px 0;
+		}
+		.icon-content {
+
+			.icon-B {
+				background: url('/icon/editor_B.png') no-repeat center;
+			}
+			.icon-I {
+				background: url('/icon/editor_I.png') no-repeat center;
+			}
+			.icon-Q {
+				background: url('/icon/editor_Q.png') no-repeat center;
+			}
+			.icon-U {
+				background: url('/icon/editor_U.png') no-repeat center;
+			}
+			.icon-O {
+				background: url('/icon/editor_O.png') no-repeat center;
+			}
+			.icon-L {
+				background: url('/icon/editor_L.png') no-repeat center;
+			}
+			.icon-P {
+				background: url('/icon/editor_P.png') no-repeat center;
+			}
+			.icon {
+				position: relative;
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				padding: 0 5px 0 10px;
+				background-size: 16px 16px;
+				
+				&:hover {
+					&:after {
+						position: absolute;
+						content: '';
+						width: 24px;
+						height: 24px;
+						background-color: rgba(0, 0, 0, 0.2);
+						left: 4px;
+						top: -4px;
+						border-radius: 4px;
+					}
+				}
+				.upload-img {
+					display: inline-block;
+					position: absolute;
+					left: 8px;
+					top: 0;
+					width: 16px;
+					height: 16px;
+					opacity: 0;
+					overflow: hidden;
+					z-index: 999;
+				}
+			}
+			.icon-bg {
+				position: relative;
+				&:after {
+					position: absolute;
+					content: '';
+					width: 24px;
+					height: 24px;
+					background-color: rgba(0, 0, 0, 0.2);
+					left: 4px;
+					top: -4px;
+					border-radius: 4px;
+				}
+			}
+			.divider-vertical {
+				position: relative;
+				display: inline-block;
+				margin: 0 5px;
+				.shu {
+					position: absolute;
+					top: -20px;
+					left: 0;
+					width: 1px;
+					height: 24px;
+					background-color: #ccc;
+				}
+			}
+		}
+		.submit-container {
+			text-align: center;
+			padding: 20px 13px 20px 13px;
+		}
+
+		.tips {
+			background: #fff;	
+			.tips-title {
+				font-size: 13px;
+			}
+			.tips-mark {
+				padding: 10px 13px;
+				height: 15px;
+				line-height: 15px;
+				font-size: 13px;
+			}
+			.tips-gray {
+				color: gray;
+			}
+		}
+		@media (max-width: 992px) {
+			.display-none {
+				display: none;
+			}
+		}
+  }
+}

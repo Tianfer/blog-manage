@@ -1,0 +1,383 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	background: #e1e1e1;
+	font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+.font-14px {
+	font-size: 14px;
+}
+.color-primary {
+	color: #20a0ff;
+}
+.color-danger {
+	color: #FF4949;
+}
+.divider {
+	height: 1px;
+	background-color: #ccc;
+}
+.padding {
+	padding: 20px;
+}
+.el-popover {
+	min-width: 10px !important;
+}
+.header {
+	width: 100%;
+	min-width: 850px;
+	height: 50px;
+	line-height: 50px;
+	background-color: #444;
+	color: #fff;
+	.left {
+		float: left;
+		margin-left: 40px;
+		a {
+			float: left;
+			height: 50px;
+			line-height: 50px;
+			font-size: 16px;
+			padding: 0 10px;
+			color: #fff;
+			h1 {
+				font-size: 20px;
+			}
+		}
+	}
+	.right {
+		float: right;
+		margin-right: 40px;
+		a {
+			padding: 0 10px;
+			color: #fff;
+		}
+	}
+}
+.window {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: 1000;
+	.window-form {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -200px;
+		margin-top: -200px; 
+		width: 400px;
+		background-color: #fff;
+		.relative {
+			position: relative;
+		}
+		.right {
+			position: absolute;
+			right: 20px;
+		}
+		.head {
+			position: relative;
+			padding: 20px;
+			background-color: #ccc;
+			.span {
+				font-size: 16px;
+			}
+		}
+		.normal {
+			padding: 20px 20px 0 20px;
+			.input-space {
+				padding-left: 20px;
+			}
+			.form-user {
+				width: 16px;
+				height: 16px;
+				background: url('/icon/user.png') no-repeat center;
+				background-size: 16px 16px;
+			}
+			.form-pass {
+				width: 16px;
+				height: 16px;
+				background: url('/icon/pass.png') no-repeat center;
+				background-size: 16px 16px;
+			}
+			.form-submit {
+				width: 100%;
+			}
+			.form-question {
+				padding-top: 3px;
+			}
+		}
+		.padding-bottom {
+			padding-bottom: 60px;
+		}
+	}
+}
+.content {
+	min-width: 650px;
+	padding: 15px;
+	.article {
+		padding: 15px;
+		background: #fff;
+		.article-title {
+			height: 50px;
+			line-height: 50px;
+			font-size: 30px;
+			strong:hover {
+				color: #20a0ff;
+			}
+		}
+		.article-type {
+			padding: 10px 25px;
+			text-align: right;
+			font-size: 14px;
+		}
+		.article-h1 {
+			padding: 0 25px; 
+			height: 40px;
+			line-height: 40px;
+			font-size: 25px;
+			font-weight: bold;
+		}
+		.article-span {
+			text-indent: 2em;
+			height: 25px;
+			line-height: 25px;
+			font-size: 16px;
+		}
+		.article-detail {
+			margin-top: 10px;
+			a {
+				color: #20a0ff;
+			}
+		}
+		.article-footer {
+			padding: 0 20px;
+			height: 24px;
+			line-height: 24px;
+			font-size: 12px;
+		}
+	}
+	.list {
+		padding: 60px 20px 0;
+		background-color: #fff;
+		.list-title {
+			padding: 0 15px;
+			height: 30px;
+			line-height: 30px;
+			font-size: 20px;
+		}
+		.list-item {
+			padding: 10px 40px 0;
+			height: 24px;
+			line-height: 24px;
+			font-size: 16px;
+		}
+		.list-more {
+		}
+	}
+	.space {
+		padding: 15px;
+		background-color: #fff;
+	}
+
+
+	.right {
+		padding: 20px;
+		background: #fff;
+	}
+	@media (max-width: 768px) {
+		.display-none {
+			display: none;
+		}
+	}
+}
+.detail {
+	padding: 20px 30px;
+	min-width: 800px;
+	.detail-box {
+		background-color: #fff;
+
+		.detail-type {
+			text-align: right;
+		}
+		.detail-title {
+			height: 50px;
+			line-height: 50px;
+			font-size: 36px;
+		}
+		.detail-date {
+			text-align: right;
+		}
+		.detail-text {
+			h1 {
+				height: 60px;
+				line-height: 60px;
+				font-size: 30px;
+				border-bottom: 1px solid #ccc;
+			}
+			h2 {
+				height: 60px;
+				line-height: 60px;
+				font-size: 26px;
+				border-bottom: 1px solid #ccc;
+			}
+			h3 {
+				height: 50px;
+				line-height: 50px;
+				font-size: 22px;
+				border-bottom: 1px solid #ccc;
+			}
+			p {
+				padding: 10px 20px;
+				line-height: 40px;
+				text-indent: 2em;
+			}
+			pre {
+				padding: 20px;
+			}
+			code {
+				display: inline-block;
+				line-height: 24px;
+				font-size: 18px;
+				// background-color: #58B7FF;
+				background-color: #ccc;
+				padding-right: 20px;
+				border-radius: 10px;
+			}
+			img {
+				display: block;
+			}
+			a {
+				color: #20A0FF;
+			}
+			ul {
+				list-style-type: square;
+			}
+			li {
+				height: 40px;
+				line-height: 40px;
+				margin: 0 40px;
+				font-size: 16px;
+			}
+		}
+	}
+	.detail-comment {
+		background-color: #fff;
+	}
+
+	.comment-box {
+		margin-top: 50px;
+		background-color: #fff;
+		.comment-title {
+			height: 50px;
+			line-height: 50px;
+			font-size: 26px;
+		}
+		.comment-detail {
+			padding: 0 40px;
+
+			.comment-username {
+				height: 40px;
+				line-height: 40px;
+				font-size: 18px;
+			}
+			.comment-content {
+				padding: 5px 20px;
+			}
+			.comment-reply {
+				height: 40px;
+				line-height: 40px;
+				text-align: right;
+				border-bottom: 1px dashed #ccc;
+			}
+		}
+		.comment-submit {
+			text-align: center;
+			padding-bottom: 30px;
+		}
+	}
+}
+.admin {
+	padding: 30px;
+	min-width: 650px;
+	.admin-container {
+		padding: 20px;
+		background-color: #fff;
+		.admin-box {
+			div {
+				display: inline-block;
+				width: 33%;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+			}
+		}
+	}
+}
+.atcList {
+	min-width: 800px;
+	padding: 30px;
+	.atcList-container {
+		padding: 20px;
+		background-color: #fff;
+		.atcList-box {
+			border: 1px solid #ccc;
+		}
+		.atcList-item {
+			height: 50px;
+			line-height: 50px;
+			border-bottom: 1px solid #ccc;
+			div {
+				display: inline-block;
+				height: 50px;
+				line-height: 50px;
+				font-size: 18px;
+				text-align: center;
+				overflow: hidden;
+				border-right: 1px solid #ccc;
+			}
+			.atcList-title {
+				width: 40%;
+			}
+			.atcList-type, .atcList-time {
+				width: 20%;
+			}
+			.atcList-update {
+				width: 9%
+			}
+			.atcList-del {
+				width: 10%;
+				border-right: none;
+			}
+		}
+	}
+}
+.userList {
+	min-width: 650px;
+	padding: 30px;
+	.userList-container {
+		padding: 20px;
+		background-color: #fff;
+		.userList-box {
+			min-height: 500px;
+			border: 1px solid #ccc;
+		}
+		.userList-label {
+			height: 50px;
+			line-height: 50px;
+			font-size: 18px;
+			border-bottom: 1px solid #ccc;
+			div {
+				text-align: center;
+				width: 33%;
+				display: inline-block;
+				border-right: 1px solid #ccc;
+			}
+			.userList-del {
+				border-right: none;
+			}
+		}
+	}
+}
