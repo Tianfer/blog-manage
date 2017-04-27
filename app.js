@@ -29,4 +29,4 @@ app.use(views(path.join(__dirname, 'views/pages'), {
 const router = require('./router/router')
 
 app.use(router.routes()).use(router.allowedMethods())
-app.listen(4000)
+app.listen(80)
