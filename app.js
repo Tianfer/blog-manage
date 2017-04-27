@@ -6,7 +6,6 @@ const convert = require('koa-convert')
 const bodyParser = require('koa-bodyparser')
 const app = new Koa()
 const session = require('koa-session')
-const fs = require('fs')
 
 global.moment = require('moment')
 app.keys = ['secret key']
@@ -30,4 +29,4 @@ app.use(views(path.join(__dirname, 'views/pages'), {
 const router = require('./router/router')
 
 app.use(router.routes()).use(router.allowedMethods())
-app.listen(3000)
+app.listen(4000)
