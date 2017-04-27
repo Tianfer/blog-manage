@@ -66,5 +66,8 @@ let signin = new Vue({
 				})
 			}
 		}
+	},
+	created: function() {
+		document.querySelector('.window').style.display = 'block'
 	}
 })
