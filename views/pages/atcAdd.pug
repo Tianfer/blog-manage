@@ -1,0 +1,70 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		title Tianfer's Blog
+		include ../head/head.pug
+		link(href='/css/atcAdd.css', rel='stylesheet')
+	body
+		include ../head/header.pug
+
+		if data
+			div.isData
+				input(id='dataId', type='hidden', value=data._id)
+				input(id='dataTitle', type='hidden', value=data.title)
+				input(id='dataType', type='hidden', value=data.type)
+				input(id='dataTips', type='hidden', value=data.tips)
+				input(id='dataContent', type='hidden', value=data.content)
+		form.add#add(method='GET', action='/article/addDeal')
+			div.container
+				el-row(:gutter='20')
+					el-col(:xs='24', :sm='24', :md='16')
+						div.editor
+							div.head-gray
+								el-breadcrumb(separator='/')
+									el-breadcrumb-item: a(href='/') 首页
+									el-breadcrumb-item 发布文章
+							div.content-normal
+								span.span 选择分类:
+								input(type='hidden', v-model='title')
+								el-select(v-model='select', placeholder='请选择', size='small')
+									el-option(v-for='item in options', :label='item.value', :value='item.value', :disabled='item.disabled')
+							div.content-normal
+								el-input(v-model='title', placeholder='请输入标题', size='small')
+							div.content-normal
+								el-input(v-model='tips', placeholder='请输入提示,如: 你好啊<br>朋友', size='small')
+							div.divider-horizontal
+							div.content-normal.icon-content(@click='clickIcon($event)')
+								a.icon.icon-B
+								a.icon.icon-I
+								a.divider-vertical
+									.shu
+								a.icon.icon-Q
+								a.icon.icon-O
+								a.icon.icon-U
+								a.divider-vertical
+									.shu
+								a.icon.icon-L
+								a.icon.icon-P
+									el-upload.upload-img(action='/upload/img', :show-file-list="false", :on-success="uploadSeccuss", :before-upload="beforeUpload")
+										el-button 点击上传
+								a.icon.icon-V
+							div.divider-horizontal
+							div.content-normal
+								el-input(type='textarea', :autosize='{minRows: 20}', placeholder='请输入内容', v-model='textarea')
+							div.content-normal.submit-container
+								el-button(type='primary', :loading='loading', @click='submit') 提交
+						
+					el-col.display-none(:xs='0', :sm='0', :md='8')
+						div.tips
+							div.head-gray.tips-title Markdown 语法参考
+							div.tips-mark ### 单行的标题
+							div.tips-mark **粗体**
+							div.tips-mark `console.log('行内代码')`
+							div.tips-mark ```js\n code \n``` 标记代码块
+							div.tips-mark [内容](链接)
+							div.tips-mark ![文字说明](图片链接)
+							div.tips-mark 
+								a.tips-gray(href='https://segmentfault.com/markdown', target='_blank') Markdown 文档
+
+		script(src='/minjs/atcAdd.min.js')

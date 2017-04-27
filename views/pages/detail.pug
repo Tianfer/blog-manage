@@ -1,0 +1,53 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		title 文章详情页
+		include ../head/head.pug
+	body
+		include ../head/header.pug
+
+		div.detail#detail
+			div.detail-box
+				input(id='articleId', type='hidden', value=article._id)
+				div.detail-type.padding 分类： 
+					a.color-primary(href='javaScript:;') #{article.type}
+				div.detail-title.padding #{article.title}
+					div.divider
+				div.detail-date.padding 日期： #{moment(article.UpdataTime).format('YYYY-MM-D hh:mm')}
+				div.detail-text.padding!= article.content
+
+			div.comment-box
+				div.comment-title.padding 留言
+					div.divider
+				each item in comments
+					div.comment-detail
+						input(type='hidden', value=item.from._id)
+						input(type='hidden', value=item._id)
+						div.comment-username #{item.from.username} :
+						div.comment-content #{item.content}
+						div.comment-reply
+							a.color-primary(href='javaScript:;', @click='replyComment($event)') 回复
+						each reply in item.reply
+							div.comment-detail
+								input(type='hidden', value=reply.from._id)
+								input(type='hidden', value=item._id)
+								div.comment-username #{reply.from.username} :
+								div.comment-content #{reply.content}
+								div.comment-reply
+									a.color-primary(href='javaScript:;', @click='replyComment($event)') 回复
+
+				div.comment-title.padding 评论
+					div.divider
+				if username
+					div.padding
+						el-input(id='textarea', type='textarea', :autosize='{minRows: 4, maxRows: 8}', placeholder='请输入评论', v-model='content')
+					div.comment-submit
+						el-button(type='primary', @click='commentPost') 发表
+				else
+					div.padding
+						el-input(type='textarea', :autosize='{minRows: 4, maxRows: 8}', placeholder='登录后才能评论', :disabled='true')
+					div.comment-submit
+						el-button(type='primary', :disabled='true') 发表
+		
+		script(src='/minjs/detail.min.js')

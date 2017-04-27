@@ -1,0 +1,30 @@
+doctype html
+html
+	head
+		meta(charset='utf8')
+		title 文章管理页
+		include ../head/head.pug
+	body
+		include ../head/header.pug
+
+		div.atcList#atcList
+			div.atcList-container
+				div.atcList-box
+					div.atcList-item
+						div.atcList-title 文章标题
+						div.atcList-type 文章类别
+						div.atcList-time 更新事件
+						div.atcList-update 修改
+						div.atcList-del 删除
+					each item in data
+						div.atcList-item
+							input(type='hidden', value=item._id)
+							div.atcList-title #{item.title}
+							div.atcList-type #{item.type}
+							div.atcList-time #{moment(item.UpdataTime).format('YYYY-MM-D')}
+							div.atcList-update 
+								a.color-primary(href='javascript:;', @click='atcUpdate($event)') 修改
+							div.atcList-del
+								a.color-danger(href='javascript:;', @click='atcDel($event)') 删除
+
+		script(src='/minjs/atcList.min.js')

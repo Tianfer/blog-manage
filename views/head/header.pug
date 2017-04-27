@@ -1,0 +1,46 @@
+div.container#container
+	div.header
+		div.left
+			a.index(href='/') 
+				h1 Tianfer's Blog
+		div.right
+			if username
+				el-popover.popover-hidden(ref='popover', placement='bottom-start', trigger='hover')
+					if role > 40
+						div(style='margin-bottom: 10px;')
+							el-button(type='primary') 
+								a(href='/admin') 功能管理
+					div
+						el-button(type='danger') 
+							a(href='/user/logout') 退出登录
+				a.signin(href='/quitLog', @click='showWindow', v-popover:popover) #{username}
+			else
+				a.signin(href='javascript:;' @click='showWindow') 登录
+	div.window(v-show='seen')
+		el-form.window-form(:model='form')
+			div.head
+				span.span 登录账号
+				a(href='javascript:;' @click='showWindow')
+					i.el-icon-close.right
+			div.normal
+				el-input(type='text', v-model='form.name', placeholder='请输入账号', maxlength='16', minlength='8')
+					template(slot='prepend')
+						div.form-user
+			div.normal
+				el-input(type='password', v-model='form.pass', placeholder='请输入密码', maxlength='16', minlength='8')
+					template(slot='prepend')
+						div.form-pass
+			div.normal
+				el-checkbox(v-model='form.checked') 下次自动登录
+				a.right.font-14px.color-primary.form-question(href='javascript:;') 登录遇到问题
+			div.normal
+				el-button.form-submit(type='primary', size='large', @click='signin') 登录
+			div.normal.padding-bottom
+				a.right.font-14px.color-primary(href='javascript:;' @click='signup') 注册账号
+				
+					//- a(href='javascript:;') 登录遇到问题
+
+script(src='/axios/dist/axios.min.js')
+script(src='/vue/dist/vue.min.js')
+script(src='/element-ui/lib/index.js')
+script(src='/minjs/header.min.js')

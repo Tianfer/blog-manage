@@ -1,0 +1,48 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		title Tianfer's Blog
+		include ../head/head.pug
+	body
+		include ../head/header.pug
+
+		div.content#content
+			el-row(:gutter='20')
+				el-col(:xs='24', :sm='16')
+					div.article
+						input(type='hidden', value=head._id)
+						div.padding 
+							div.article-title 
+								a(href='/article?id='+head._id): strong #{head.title}
+							div.divider
+							div.article-type 分类: 
+								a.color-primary(href='javascript:;') #{head.type}
+							- let arr = head.tips.split('<br>')
+							div.article-h1 #{arr[0]}
+								div.divider
+							div.padding.article-span #{arr[1]}
+							div.padding.article-detail
+								a(href='/article?id='+head._id) 继续阅读全文 »
+							div.divider
+							div.article-footer Posted By Tianfer on #{moment(head.UpdataTime).format('MM-D-YYYY, h:mm')}
+
+					div.list
+						div.list-title 最新文章
+							div.divider
+						each item in articles
+							div.list-item #{moment(item.UpdataTime).format('MM-D-YYYY')} >>
+								input(type='hidden', value=item._id)
+								a.color-primary(href='/article?id='+item._id, @click='turnTo($event)') &nbsp;&nbsp;#{item.title}
+						if articles.length > 5
+							div.list-item
+								a.color-primary(href='javascript:;') 更多文章...
+
+					div.space
+						div.padding
+							.divider
+
+				el-col(:xs='0', :sm='8')
+					div.right.display-none
+						div.demo 你好
+						br
