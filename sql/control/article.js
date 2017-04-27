@@ -3,6 +3,7 @@ const ArticleSchema = require('../schema/article')
 const Article = mongoose.model('Article', ArticleSchema)
 const CommentSchema = require('../schema/comment')
 const Comment = mongoose.model('Comment', CommentSchema)
+const fs = require('fs')
 
 const marked = require('marked')
 marked.setOptions({
@@ -208,7 +209,10 @@ exports.updateDeal = async(ctx) => {
 
 // 上传图片
 exports.uploadImg = async(ctx) => {
+	console.log('2')
 	let img = ctx.request.fields.file[0].path
+	console.log(ctx.request.fields)
+	console.log(img)
 	await new Promise(function(resolve, reject) {
 		// 读取文件
 		fs.readFile(img, function(err, data) {
@@ -220,10 +224,13 @@ exports.uploadImg = async(ctx) => {
 		})
 	}).then(async(data) => {
 		let fileName = new Date().getTime() + '' + Math.floor(Math.random() * 1000) + '.png'
+		console.log(fileName)
+		console.log(__dirname)
 		// 写入文件
 		await new Promise(function(resolve, reject) {
-			fs.writeFile('../../public/upload/' + fileName, data, 'utf8', function(err) {
+			fs.writeFile('./public/upload/' + fileName, data, 'utf8', function(err) {
 				if(err) {
+					console.log(err)
 					reject()
 				} else {
 					resolve()
@@ -232,9 +239,10 @@ exports.uploadImg = async(ctx) => {
 		}).then(function() {
 			ctx.body = fileName
 		}, function(err) {
-			ctx.body = ''
+			ctx.body = 'err'
 		})
 	}, function(err) {
+		console.log(err)
 		ctx.body = ''
 	})
 }

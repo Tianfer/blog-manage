@@ -93,7 +93,6 @@ exports.signup = async(ctx) => {
 						if(err) {
 							reject(err)
 						} else {
-							console.log(data)
 							resolve(data)
 						}
 					})
@@ -158,7 +157,6 @@ exports.req = async(ctx, next) => {
 		global.role = ctx.session.role || ctx.cookies.get('role')
 	}
 
-	console.log(global.role)
 	if(!global.role || global.role < 40) {
 		await ctx.redirect('/')
 	}
