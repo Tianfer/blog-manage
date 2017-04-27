@@ -13,7 +13,7 @@ let detail = new Vue({
 	},
 	methods: {
 		commentPost: function() {
-			$this = this
+			let $this = this
 			// 判断点击回复之后，把@删除了
 			if(this.username) {
 				let reg = new RegExp(this.username)

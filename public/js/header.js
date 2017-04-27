@@ -13,7 +13,7 @@ let signin = new Vue({
 			this.seen = !this.seen
 		},
 		signin: function() {
-			$this = this
+			let $this = this
 			if(!this.form.name || !this.form.pass) {
 				$this.$message({
 					message: '账号或者密码不能为空',
@@ -56,7 +56,11 @@ let signin = new Vue({
 					username: this.form.name,
 					password: this.form.pass
 				}).then(function(res) {
-					$this.$message('注册成功,请点击登陆')
+					if(res.data == '注册成功') {
+						$this.$message('注册成功,请点击登陆')
+					} else {
+						$this.$message.error('该用户名已存在')
+					}		
 				}).catch(function(err) {
 					console.log(err)
 				})
