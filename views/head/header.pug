@@ -13,7 +13,7 @@ div.container#container
 					div
 						el-button(type='danger') 
 							a(href='/user/logout') 退出登录
-				a.signin(href='/quitLog', @click='showWindow', v-popover:popover) #{username}
+				a.signin(href='javascript:;', @click='showWindow', v-popover:popover) #{username}
 			else
 				a.signin(href='javascript:;' @click='showWindow') 登录
 	div.window(v-show='seen')
