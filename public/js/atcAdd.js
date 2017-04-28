@@ -64,7 +64,13 @@ const arcAdd = new Vue({
 					break
 				case 'U':
 					this.textInsert('*')
-					break		
+					break
+				case 'V':
+					this.$message({
+						message: '预览功能暂无',
+						type: 'warning',
+					})
+					break
 				default:
 					break
 			}
@@ -188,16 +194,16 @@ const arcAdd = new Vue({
 			} else {
 					for(let j = 0; j < arrLength; j++) {
 						if(arr[j] >= end) {
-							startText = text.value.slice(0, arr[j-1]+1)
-							endText = text.value.slice(arr[j-1]+1)
+							startText = text.value.slice(0, arr[j-1]+2)
+							endText = text.value.slice(arr[j-1]+2)
 							text.value = startText + str + endText
 							text.focus()
 							text.setSelectionRange(arr[j-1]+2, arr[j-1]+2)
 							return
 						}
 					}
-					startText = text.value.slice(0, arr[arrLength-1]+1)
-					endText = text.value.slice(arr[arrLength-1]+1)
+					startText = text.value.slice(0, arr[arrLength-1]+2)
+					endText = text.value.slice(arr[arrLength-1]+2)
 					text.value = startText + str + endText
 					text.focus()
 					text.setSelectionRange(arr[arrLength-1]+2, arr[arrLength-1]+2)
