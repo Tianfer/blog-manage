@@ -153,8 +153,6 @@ exports.keepLog = async(ctx, next) => {
 
 // 登录权限
 exports.req = async(ctx, next) => {
-	console.log('req')
-
 	if(!ctx.state.role || ctx.state.role < 40) {
 		await ctx.redirect('/')
 	}

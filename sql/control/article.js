@@ -82,8 +82,8 @@ exports.get = async(ctx) => {
 			article,
 			comments
 		})
-	}, function(data) {
-		console.log(data)
+	}, function(err) {
+		console.log(err)
 	})
 }
 
@@ -222,8 +222,6 @@ exports.uploadImg = async(ctx) => {
 		})
 	}).then(async(data) => {
 		let fileName = new Date().getTime() + '' + Math.floor(Math.random() * 1000) + '.png'
-		console.log(fileName)
-		console.log(__dirname)
 		// 写入文件
 		await new Promise(function(resolve, reject) {
 			fs.writeFile('./public/upload/' + fileName, data, 'utf8', function(err) {
