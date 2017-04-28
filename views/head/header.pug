@@ -13,7 +13,7 @@ div.container#container
 					div
 						el-button(type='danger') 
 							a(href='/user/logout') 退出登录
-				a.signin(href='javascript:;', @click='showWindow', v-popover:popover) #{username}
+				a.signin(href='javascript:;', v-popover:popover) #{username}
 			else
 				a.signin(href='javascript:;' @click='showWindow') 登录
 	div.window(v-show='seen')
@@ -38,9 +38,3 @@ div.container#container
 			div.normal.padding-bottom
 				a.right.font-14px.color-primary(href='javascript:;' @click='signup') 注册账号
 				
-					//- a(href='javascript:;') 登录遇到问题
-
-script(src='/axios/dist/axios.min.js')
-script(src='/vue/dist/vue.min.js')
-script(src='/element-ui/lib/index.js')
-script(src='/minjs/header.min.js')
