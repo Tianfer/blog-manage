@@ -209,14 +209,12 @@ exports.updateDeal = async(ctx) => {
 
 // 上传图片
 exports.uploadImg = async(ctx) => {
-	console.log('2')
 	let img = ctx.request.fields.file[0].path
-	console.log(ctx.request.fields)
-	console.log(img)
 	await new Promise(function(resolve, reject) {
 		// 读取文件
 		fs.readFile(img, function(err, data) {
 			if(err) {
+				console.log(err)
 				reject(err)
 			} else {
 				resolve(data)

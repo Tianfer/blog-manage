@@ -54,9 +54,11 @@ exports.signin = async(ctx) => {
 					overwrite: false
 				})
 			}
-			ctx.session.username = user.username
-			ctx.session.userId = data[0]._id
-			ctx.session.role = data[0].role
+			ctx.session = {
+				username: user.username,
+				userId: data[0]._id,
+				role: data[0].role
+			}
 			ctx.body = '登录成功'
 		} else {
 			ctx.body = '密码错误'
@@ -132,37 +134,32 @@ exports.logout = async(ctx) => {
 
 // 登录状态
 exports.keepLog = async(ctx, next) => {
-	if(!global.username) {
+	if(!ctx.session) {
 		if(ctx.cookies.get('username')) {
-			global.username = ctx.cookies.get('username')
-			global.userId = ctx.cookies.get('userId')
-			global.role = ctx.cookies.get('role')
-			ctx.session.username = global.username
-			ctx.session.userId = global.userId
-			ctx.session.role = global.role
-		} else if(ctx.session.username) {
-			global.username = ctx.session.username
-			global.userId = ctx.session.userId
-			global.role = ctx.session.role
+			ctx.session = {
+				username: ctx.cookies.get('username'),
+				userId: ctx.cookies.get('userId'),
+				role: ctx.cookies.get('role')
+			}
+		} else {
+			return ctx.redirect('/')
 		}
 	}
+	// 本次存储
+	ctx.state = ctx.session
 
 	await next()
-	return
 }
 
 // 登录权限
 exports.req = async(ctx, next) => {
-	if(!global.role) {
-		global.role = ctx.session.role || ctx.cookies.get('role')
-	}
+	console.log('req')
 
-	if(!global.role || global.role < 40) {
+	if(!ctx.state.role || ctx.state.role < 40) {
 		await ctx.redirect('/')
 	}
 	
 	await next()
-	return
 }
 
 // 用户列表
